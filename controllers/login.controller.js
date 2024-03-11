@@ -56,4 +56,21 @@ loginController.get("/getactive", async (req, res) => {
   }
 });
 
+loginController.patch(
+  "/update/:studentId",
+  authentication,
+  async (req, res) => {
+    try {
+      const { studentId } = req.params;
+
+      await User.findByIdAndUpdate({ _id: studentId }, { ...req.body });
+      res.status(201).send({ message: "Updated Details Successfully" });
+    } catch (error) {
+      res
+        .status(500)
+        .send({ message: "something went wrong please signup again" });
+    }
+  }
+);
+
 module.exports = { loginController };
