@@ -4,6 +4,7 @@ const loginController = Router();
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { authentication } = require("../middlewares/authentication");
 
 loginController.post("/", async (req, res) => {
   const { email, password } = req.body;
