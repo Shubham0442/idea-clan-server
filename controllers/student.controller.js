@@ -24,7 +24,7 @@ studentController.get(
 studentController.patch(
   "/update-role/:studentId",
   authentication,
-  authorization(["admin"], async (req, res) => {
+  authorization(["admin"]), async (req, res) => {
     try {
       const { studentId } = req.params;
       await User.findByIdAndUpdate({ _id: studentId }, { ...req.body });
@@ -35,6 +35,5 @@ studentController.patch(
         .send({ message: "something went wrong please signup again" });
     }
   })
-);
 
 module.exports = { studentController };
