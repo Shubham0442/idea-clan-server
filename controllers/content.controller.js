@@ -70,7 +70,7 @@ contentController.patch(
   }
 );
 
-contentController.patch(
+contentController.delete(
   "/remove/:contentId",
   authentication,
   authorization(["admin"]),
